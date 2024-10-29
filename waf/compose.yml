@@ -1,0 +1,18 @@
+services:
+  webgoat:
+    image: webgoat/webgoat
+    environment:
+      - TZ=Asia/Tokyo
+  modsecurity:
+    build:
+      context: modsecurity
+    ports:
+      - 80:8080
+    volumes:
+      - ./attacker/log:/var/log/modsec/
+    environment:
+      - BACKEND=http://webgoat:8080
+      - PORT=8080
+      - MODSEC_RULE_ENGINE=DetectionOnly
+      - MODSEC_AUDIT_LOG_PARTS=ABIJDEFHZ
+      - MODSEC_AUDIT_LOG=/var/log/modsec/audit.log
