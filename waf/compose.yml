@@ -16,3 +16,7 @@ services:
       - MODSEC_RULE_ENGINE=DetectionOnly
       - MODSEC_AUDIT_LOG_PARTS=ABIJDEFHZ
       - MODSEC_AUDIT_LOG=/var/log/modsec/audit.log
+  attacker:
+    build:
+      context: attacker
+    tty: true
