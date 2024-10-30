@@ -3,11 +3,14 @@ services:
     image: webgoat/webgoat
     environment:
       - TZ=Asia/Tokyo
+    ports:
+      - 3000:8080
+
   modsecurity:
     build:
       context: modsecurity
     ports:
-      - 80:8080
+      - 8080:8080
     volumes:
       - ./attacker/log:/var/log/modsec/
     environment:
