@@ -41,6 +41,9 @@ func main() {
 		// SQLインジェクションの脆弱性を持つクエリ
 		db.Raw("SELECT * FROM users WHERE username = '" + username + "' AND password = '" + password + "'").Scan(&user)
 
+		// SQLインジェクションの脆弱性を解消したクエリ
+		// db.Where("username = ? AND password = ?", username, password).First(&user)
+
 		if user.ID != 0 {
 			c.HTML(http.StatusOK, "success.html", gin.H{"username": user.Username})
 		} else {
