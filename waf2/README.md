@@ -1,4 +1,4 @@
-# サイバーセキュリティ演習
+# サイバーセキュリティ演習(SQL インジェクションと Web Application Firewall)
 
 このアプリには以下のユーザーが登録されています。
 
@@ -12,7 +12,7 @@
 1. DockerCompose でビルドする
 
    ```bash
-   docker-compose up -d
+   docker-compose build
    ```
 
 1. DockerCompose でコンテナを起動する
@@ -66,8 +66,8 @@
 
 1. WAF(Web Application Firewall) によって保護された <http://localhost:8080/login> にアクセスし、ログインフォームに以下の値を入力する
 
-- Username: `user1`
-- Password: `' OR '1'='1`
+   - Username: `user1`
+   - Password: `' OR '1'='1`
 
 1. 「403 Forbidden」が表示される
 
